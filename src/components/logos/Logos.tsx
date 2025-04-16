@@ -1,3 +1,4 @@
+import React from "react";
 import { motion } from "framer-motion";
 import {
   SiNike,
@@ -59,7 +60,7 @@ const TranslateWrapper = ({
   children,
   reverse,
 }: {
-  children: JSX.Element;
+  children: React.ReactNode;
   reverse?: boolean;
 }) => {
   return (
