@@ -1,6 +1,21 @@
 import React from "react";
 import Link from "next/link";
-import { LinkType } from "../../constants/navLinks";
+
+export type LinkType = {
+  title: string;
+  href: string;
+};
+
+export const NAV_LINKS = [
+  {
+    title: "Home",
+    href: "/",
+  },
+  {
+    title: "Blog",
+    href: "/blog",
+  },
+];
 
 export const DesktopLinks = ({
   links,

@@ -1,5 +1,5 @@
 import { ExpandableNavBar } from "@/components/navigation/ExpandableNavBar";
-import { NAV_LINKS } from "@/constants/navLinks";
+import { NAV_LINKS } from "@/components/navigation/DesktopLinks";
 import { Footer } from "@/components/footer/Footer";
 import { BlogGrid } from "@/components/blog/BlogGrid";
 import { font } from "@/fonts";

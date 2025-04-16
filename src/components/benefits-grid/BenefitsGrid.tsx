@@ -6,7 +6,12 @@ import { HighlighBlocks } from "./HighlighBlocks";
 import { SectionHeading } from "../shared/SectionHeading";
 import { SectionSubheading } from "../shared/SectionSubheading";
 import { Button } from "../shared/Button";
-import { BENEFITS_GRID_TEXTS } from "@/constants/texts";
+
+const BENEFITS_GRID_TEXTS = {
+  heading: "Why Protocols Choose Nuwa",
+  subheading: "Transform your Web3 offering with AI agents that make complex features accessible to mainstream users while unlocking entirely new capabilities.",
+  ctaButton: "Explore Solutions"
+};
 
 export const BenefitsGrid = () => {
   return (

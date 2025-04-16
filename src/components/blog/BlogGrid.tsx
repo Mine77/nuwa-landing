@@ -1,5 +1,5 @@
 import { Post } from "./Post";
-import { posts } from "../../constants/blogData";
+import { posts } from "./BlogCarousel";
 
 export const BlogGrid = () => {
     return (

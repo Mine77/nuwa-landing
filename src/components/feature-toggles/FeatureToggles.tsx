@@ -4,7 +4,11 @@ import { data } from "./data";
 import { FeatureDisplay } from "./FeatureDisplay";
 import { SectionHeading } from "../shared/SectionHeading";
 import { SectionSubheading } from "../shared/SectionSubheading";
-import { FEATURE_TOGGLES_TEXTS } from "@/constants/texts";
+
+const FEATURE_TOGGLES_TEXTS = {
+  heading: "Powerful Web3 Agent Solution",
+  subheading: "Nuwa provides the complete tech stack for Web3 protocols to deploy AI agents that can directly interact with on-chain smart contracts while maintaining robust security and brand identity."
+};
 
 export const FeatureToggles = () => {
   const [selected, setSelected] = useState(1);
@@ -36,7 +40,7 @@ export const FeatureToggles = () => {
               selected={selected}
               cardTitle={el!.cardTitle}
               cardSubtitle={el!.cardSubtitle}
-              Component={el!.Component}
+              svgUrl={el!.svgUrl}
             />
           </div>
         </div>

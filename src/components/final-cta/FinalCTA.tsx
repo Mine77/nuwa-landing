@@ -2,7 +2,12 @@ import React from "react";
 import { SectionHeading } from "../shared/SectionHeading";
 import { LogoLarge } from "../navigation/Logo";
 import { Button } from "../shared/Button";
-import { FINAL_CTA_TEXTS } from "@/constants/texts";
+
+const FINAL_CTA_TEXTS = {
+  heading: "Become an Early Adopter",
+  subheading: "Join our Early Access Program and receive free integration, first month free, plus a 30% lifetime discount. Limited spots available.",
+  ctaButton: "Apply Now"
+};
 
 export const FinalCTA = () => {
   return (

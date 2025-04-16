@@ -6,12 +6,12 @@ export const FeatureDisplay = ({
   selected,
   cardTitle,
   cardSubtitle,
-  Component,
+  svgUrl,
 }: {
   selected: number;
   cardTitle: string;
   cardSubtitle: string;
-  Component: () => JSX.Element;
+  svgUrl: string;
 }) => {
   return (
     <div className="grid h-fit w-full grid-cols-1 overflow-hidden rounded-xl border-2 border-zinc-900 bg-white md:h-96 md:grid-cols-12">
@@ -45,7 +45,7 @@ export const FeatureDisplay = ({
           </AnimatePresence>
         </div>
         <Button>
-          <span className="font-bold">Get started - </span> no CC required
+          <span className="font-bold">Learn Details</span>
         </Button>
       </div>
       <div className="relative col-span-1 min-h-80 border-l-0 border-t-2 border-zinc-900 bg-zinc-100 shadow-inner shadow-zinc-500 md:col-span-5 md:border-l-2 md:border-t-0">
@@ -73,7 +73,13 @@ export const FeatureDisplay = ({
             key={selected}
             className="pointer-events-none absolute bottom-0 left-8 right-0 top-8 overflow-hidden rounded-tl-2xl border-l-2 border-t-2 border-zinc-900 bg-white shadow-2xl"
           >
-            <Component />
+            <div className="flex h-full w-full items-center justify-center">
+              <img
+                src={svgUrl}
+                alt={cardTitle}
+                className="h-full w-full object-contain p-4"
+              />
+            </div>
           </motion.div>
         </AnimatePresence>
       </div>

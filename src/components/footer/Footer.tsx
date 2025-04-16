@@ -3,9 +3,22 @@ import { SiInstagram, SiX, SiYoutube } from "react-icons/si";
 import { IconType } from "react-icons";
 import Link from "next/link";
 import { Logo } from "../navigation/Logo";
-import { NAV_LINKS } from "../../constants/navLinks";
-import { FOOTER_TEXTS } from "@/constants/texts";
+import { NAV_LINKS } from "../navigation/DesktopLinks";
 import { BsGithub } from "react-icons/bs";
+
+const FOOTER_TEXTS = {
+  copyright: "© Nuwa.dev - All rights reserved.",
+  socialLinks: [
+    {
+      title: "Twitter",
+      href: "/#"
+    },
+    {
+      title: "Github",
+      href: "/#"
+    }
+  ]
+};
 
 export const Footer = () => {
   return (

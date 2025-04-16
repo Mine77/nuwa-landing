@@ -2,7 +2,14 @@ import Link from "next/link";
 import React from "react";
 import { FiArrowUpRight } from "react-icons/fi";
 import { Button } from "../shared/Button";
-import { HERO_TEXTS } from "@/constants/texts";
+
+const HERO_TEXTS = {
+  productHuntBadge: "NEW!",
+  productHuntText: "Early Access Now Open!",
+  heading: "Every Protocol, One Agent Away",
+  subheading: "Nuwa is a pioneering Agent-as-a-Service (AaaS) solution that enables any on-chain protocol, platform, or application to deploy customized AI agents with minimal technical overhead.",
+  ctaButton: "Join Early Access"
+};
 
 export const Copy = () => {
   return (

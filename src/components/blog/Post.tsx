@@ -1,4 +1,13 @@
-import { CARD_WIDTH, MARGIN, PostType } from "../../constants/blogData";
+export const CARD_WIDTH = 350;
+export const MARGIN = 20;
+
+export type PostType = {
+  id: number;
+  imgUrl: string;
+  tag: string;
+  title: string;
+  description: string;
+};
 
 export const Post = ({ imgUrl, tag, title, description }: PostType) => {
   return (

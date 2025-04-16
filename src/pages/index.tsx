@@ -2,7 +2,7 @@ import { FeatureToggles } from "@/components/feature-toggles/FeatureToggles";
 import { Hero } from "@/components/hero/Hero";
 import { Logos } from "@/components/logos/Logos";
 import { ExpandableNavBar } from "@/components/navigation/ExpandableNavBar";
-import { NAV_LINKS } from "@/constants/navLinks";
+import { NAV_LINKS } from "@/components/navigation/DesktopLinks";
 import { BenefitsGrid } from "@/components/benefits-grid/BenefitsGrid";
 import { font } from "@/fonts";
 import { BlogCarousel } from "@/components/blog/BlogCarousel";

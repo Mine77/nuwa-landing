@@ -2,11 +2,10 @@ import React, { ReactNode, useState } from "react";
 import { motion } from "framer-motion";
 import { FiMenu } from "react-icons/fi";
 import { Logo } from "./Logo";
-import { DesktopLinks } from "./DesktopLinks";
+import { DesktopLinks, LinkType } from "./DesktopLinks";
 import { MobileLinks } from "./MobileLinks";
 import { Announcement } from "./Announcement";
 import { Button } from "../shared/Button";
-import { LinkType } from "../../constants/navLinks";
 
 export const ExpandableNavBar = ({
   children,
