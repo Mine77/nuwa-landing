@@ -1,6 +1,6 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { LinkType } from "./constants";
+import { LinkType } from "../../constants/navLinks";
 
 export const MobileLinks = ({
   links,
@@ -22,24 +22,17 @@ export const MobileLinks = ({
           exit={{
             opacity: 0,
           }}
-          className="grid grid-cols-2 gap-6 py-6 md:hidden"
+          className="grid grid-cols-1 gap-6 py-6 md:hidden"
         >
-          {links.map((l) => {
-            return (
-              <div key={l.title} className="space-y-1.5">
-                <span className="text-md block font-semibold">{l.title}</span>
-                {l.sublinks.map((sl) => (
-                  <a
-                    className="text-md block text-zinc-600"
-                    href={sl.href}
-                    key={sl.title}
-                  >
-                    {sl.title}
-                  </a>
-                ))}
-              </div>
-            );
-          })}
+          {links.map((l) => (
+            <a
+              key={l.title}
+              href={l.href}
+              className="text-md block font-semibold text-zinc-950 hover:text-indigo-600"
+            >
+              {l.title}
+            </a>
+          ))}
         </motion.div>
       )}
     </AnimatePresence>

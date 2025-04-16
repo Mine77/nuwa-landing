@@ -6,6 +6,7 @@ import { HighlighBlocks } from "./HighlighBlocks";
 import { SectionHeading } from "../shared/SectionHeading";
 import { SectionSubheading } from "../shared/SectionSubheading";
 import { Button } from "../shared/Button";
+import { BENEFITS_GRID_TEXTS } from "@/constants/texts";
 
 export const BenefitsGrid = () => {
   return (
@@ -18,10 +19,9 @@ export const BenefitsGrid = () => {
       className="relative mx-auto grid max-w-6xl grid-cols-3 gap-4 px-2 md:px-4"
     >
       <div className="col-span-3">
-        <SectionHeading>The clear benefits of X</SectionHeading>
+        <SectionHeading>{BENEFITS_GRID_TEXTS.heading}</SectionHeading>
         <SectionSubheading>
-          Features are good, benefits are even better! Here's a made up list for
-          reference.
+          {BENEFITS_GRID_TEXTS.subheading}
         </SectionSubheading>
       </div>
       <IntegrationsBlock />
@@ -29,7 +29,7 @@ export const BenefitsGrid = () => {
       <HighlighBlocks />
       <div className="col-span-3 mt-6 flex justify-center">
         <Button intent="outline">
-          <span className="font-bold">Get started - </span> no CC required
+          <span className="font-bold">{BENEFITS_GRID_TEXTS.ctaButton}</span>
         </Button>
       </div>
     </motion.section>

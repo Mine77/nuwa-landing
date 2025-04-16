@@ -2,8 +2,10 @@ import React from "react";
 import { SiInstagram, SiX, SiYoutube } from "react-icons/si";
 import { IconType } from "react-icons";
 import Link from "next/link";
-import { LogoSmall } from "../navigation/Logo";
-import { NAV_LINKS } from "../navigation/constants";
+import { Logo } from "../navigation/Logo";
+import { NAV_LINKS } from "../../constants/navLinks";
+import { FOOTER_TEXTS } from "@/constants/texts";
+import { BsGithub } from "react-icons/bs";
 
 export const Footer = () => {
   return (
@@ -11,47 +13,20 @@ export const Footer = () => {
       <footer className="relative mx-auto max-w-6xl overflow-hidden py-12">
         <div className="md:px4 grid grid-cols-12 gap-x-1.5 gap-y-6 px-2">
           <LogoColumn />
-          <GenericColumn title="Product" links={NAV_LINKS[0].sublinks} />
-          <GenericColumn
-            title="Company"
-            links={[...NAV_LINKS[3].sublinks, ...NAV_LINKS[4].sublinks]}
-          />
-          <GenericColumn
-            title="Legal"
-            links={[
-              {
-                title: "Terms & Conditions",
-                href: "/#",
-              },
-              {
-                title: "Privacy Policy",
-                href: "/#",
-              },
-              {
-                title: "Refund Policy",
-                href: "/#",
-              },
-            ]}
-          />
-
+          <GenericColumn title="Navigation" links={NAV_LINKS} />
           <GenericColumn
             title="Socials"
             links={[
               {
-                title: "Twitter",
-                href: "/#",
+                title: FOOTER_TEXTS.socialLinks[0].title,
+                href: FOOTER_TEXTS.socialLinks[0].href,
                 Icon: SiX,
               },
               {
-                title: "Instagram",
-                href: "/#",
-                Icon: SiInstagram,
-              },
-              {
-                title: "Youtube",
-                href: "/#",
-                Icon: SiYoutube,
-              },
+                title: FOOTER_TEXTS.socialLinks[1].title,
+                href: FOOTER_TEXTS.socialLinks[1].href,
+                Icon: BsGithub,
+              }
             ]}
           />
         </div>
@@ -63,9 +38,9 @@ export const Footer = () => {
 const LogoColumn = () => {
   return (
     <div className="col-span-6 md:col-span-4">
-      <LogoSmall />
+      <Logo />
       <span className="mt-3 inline-block text-xs">
-        © Hover.dev - All rights reserved.
+        {FOOTER_TEXTS.copyright}
       </span>
     </div>
   );

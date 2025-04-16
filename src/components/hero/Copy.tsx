@@ -2,6 +2,7 @@ import Link from "next/link";
 import React from "react";
 import { FiArrowUpRight } from "react-icons/fi";
 import { Button } from "../shared/Button";
+import { HERO_TEXTS } from "@/constants/texts";
 
 export const Copy = () => {
   return (
@@ -14,23 +15,22 @@ export const Copy = () => {
           className="flex origin-top-left items-center rounded-full border border-zinc-900 bg-white p-0.5 text-sm transition-transform hover:-rotate-2"
         >
           <span className="rounded-full bg-[#FF6154] px-2 py-0.5 font-medium text-white">
-            HEY!
+            {HERO_TEXTS.productHuntBadge}
           </span>
           <span className="ml-1.5 mr-1 inline-block">
-            We're live on Product Hunt!
+            {HERO_TEXTS.productHuntText}
           </span>
           <FiArrowUpRight className="mr-2 inline-block" />
         </Link>
       </div>
       <h1 className="max-w-4xl text-center text-4xl font-black leading-[1.15] md:text-7xl md:leading-[1.15]">
-        Launch your product with a cool landing page
+        {HERO_TEXTS.heading}
       </h1>
       <p className="mx-auto my-4 max-w-3xl text-center text-base leading-relaxed md:my-6 md:text-2xl md:leading-relaxed">
-        Your 1-2 sentence elevator pitch for what your product does and why goes
-        here. Be concise, get to the point, don't use jargon.
+        {HERO_TEXTS.subheading}
       </p>
       <Button>
-        <span className="font-bold">Get started - </span> no CC required
+        <span className="font-bold">{HERO_TEXTS.ctaButton}</span>
       </Button>
     </>
   );

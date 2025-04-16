@@ -2,8 +2,9 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import useMeasure from "react-use-measure";
-import { BREAKPOINTS, CARD_SIZE, posts } from "./data";
+import { BREAKPOINTS, CARD_SIZE, posts } from "../../constants/blogData";
 import { Post } from "./Post";
+import { BLOG_CAROUSEL_TEXTS } from "@/constants/texts";
 
 export const BlogCarousel = () => {
   const [ref, { width }] = useMeasure();
@@ -37,23 +38,21 @@ export const BlogCarousel = () => {
         <div className="mx-auto max-w-6xl">
           <div className="mb-6 flex items-center justify-between">
             <h2 className="text-center text-3xl font-medium leading-tight md:text-start md:text-4xl md:leading-tight">
-              More from us
+              {BLOG_CAROUSEL_TEXTS.heading}
             </h2>
 
             <div className="flex items-center gap-2">
               <button
-                className={`rounded-md border border-zinc-900 bg-white p-1.5 text-2xl transition-all ${
-                  CAN_SHIFT_LEFT ? "hover:bg-zinc-200" : "opacity-30"
-                }`}
+                className={`rounded-md border border-zinc-900 bg-white p-1.5 text-2xl transition-all ${CAN_SHIFT_LEFT ? "hover:bg-zinc-200" : "opacity-30"
+                  }`}
                 disabled={!CAN_SHIFT_LEFT}
                 onClick={shiftLeft}
               >
                 <FiArrowLeft />
               </button>
               <button
-                className={`rounded-md border border-zinc-900 bg-white p-1.5 text-2xl transition-all ${
-                  CAN_SHIFT_RIGHT ? "hover:bg-zinc-200" : "opacity-30"
-                }`}
+                className={`rounded-md border border-zinc-900 bg-white p-1.5 text-2xl transition-all ${CAN_SHIFT_RIGHT ? "hover:bg-zinc-200" : "opacity-30"
+                  }`}
                 disabled={!CAN_SHIFT_RIGHT}
                 onClick={shiftRight}
               >

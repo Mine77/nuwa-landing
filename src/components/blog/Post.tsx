@@ -1,4 +1,4 @@
-import { CARD_WIDTH, MARGIN, PostType } from "./data";
+import { CARD_WIDTH, MARGIN, PostType } from "../../constants/blogData";
 
 export const Post = ({ imgUrl, tag, title, description }: PostType) => {
   return (

@@ -7,7 +7,7 @@ import {
   FiMessageCircle,
   FiUser,
 } from "react-icons/fi";
-import { LogoSmall } from "../navigation/Logo";
+import { LogoThumbnail } from "../navigation/Logo";
 
 export const MockupScreen = () => {
   return (
@@ -19,25 +19,25 @@ export const MockupScreen = () => {
           <span className="size-2 rounded-full bg-green-400" />
         </div>
         <span className="rounded bg-zinc-600 px-2 py-0.5 text-xs text-zinc-100">
-          your-website.com
+          nuwa.dev
         </span>
         <FiChevronDown className="text-white" />
       </div>
       <div className="relative z-0 grid h-full w-full grid-cols-[100px,_1fr] overflow-hidden rounded-t-lg bg-white md:grid-cols-[150px,_1fr]">
         <div className="h-full border-r border-zinc-300 p-2">
-          <LogoSmall />
+          <LogoThumbnail />
           <div className="mt-3 space-y-1.5">
             <span className="flex items-center gap-1.5 text-xs text-indigo-600">
               <FiMessageCircle />
-              <span>Messages</span>
+              <span>Agents</span>
             </span>
             <span className="flex items-center gap-1.5 text-xs">
               <FiCheck />
-              <span>Tasks</span>
+              <span>Projects</span>
             </span>
             <span className="flex items-center gap-1.5 text-xs">
               <FiList />
-              <span>Board</span>
+              <span>Security</span>
             </span>
           </div>
         </div>
