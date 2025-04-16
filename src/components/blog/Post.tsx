@@ -2,7 +2,7 @@ export const CARD_WIDTH = 350;
 export const MARGIN = 20;
 
 export type PostType = {
-  id: number;
+  id?: number;
   imgUrl: string;
   tag: string;
   title: string;

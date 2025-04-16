@@ -7,6 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { GetStaticProps } from "next";
 import { useState } from "react";
+import { Post } from "@/components/blog/Post";
 
 interface BlogPageProps {
     posts: {
@@ -73,20 +74,12 @@ export default function Blog({ posts, tags }: BlogPageProps) {
                                 href={`/blog/${post.slug}`}
                                 className="group relative cursor-pointer"
                             >
-                                <div className="relative mb-3 h-[200px] w-full overflow-hidden rounded-md border-2 border-zinc-900 bg-zinc-300 shadow-[0px_6px_0px_rgb(24,_24,_27)] transition-all hover:translate-y-1.5 hover:shadow-[0px_0px_0px_rgb(24,_24,_27)]">
-                                    <Image
-                                        src={post.coverImage}
-                                        alt={post.title}
-                                        fill
-                                        loading="lazy"
-                                        className="object-cover"
-                                    />
-                                </div>
-                                <span className="rounded-md border border-zinc-900 bg-white px-1.5 py-1 text-xs">
-                                    {post.tag}
-                                </span>
-                                <h2 className="mt-1.5 text-lg font-medium">{post.title}</h2>
-                                <p className="text-sm">{post.excerpt}</p>
+                                <Post
+                                    imgUrl={post.coverImage}
+                                    tag={post.tag}
+                                    title={post.title}
+                                    description={post.excerpt}
+                                />
                                 <p className="mt-2 text-xs text-zinc-500">
                                     {new Date(post.date).toLocaleDateString()} • {post.author}
                                 </p>
