@@ -19,7 +19,7 @@ export const ExpandableNavBar = ({
   return (
     <>
       <div className="bg-indigo-600 pt-2">
-        <Announcement />
+        {/* <Announcement /> */}
         <nav className="rounded-t-2xl bg-white p-4">
           <div className="flex items-start justify-between">
             <div className="flex items-start">

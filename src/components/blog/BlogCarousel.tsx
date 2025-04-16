@@ -78,7 +78,7 @@ export const posts: PostType[] = [
 ];
 
 const BLOG_CAROUSEL_TEXTS = {
-  heading: "Use Cases By Protocol Type"
+  heading: "Blog Posts",
 };
 
 export const BlogCarousel = () => {

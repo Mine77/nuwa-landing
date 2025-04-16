@@ -6,7 +6,7 @@ import { Button } from "../shared/Button";
 const HERO_TEXTS = {
   productHuntBadge: "NEW!",
   productHuntText: "Early Access Now Open!",
-  heading: "Every Protocol, One Agent Away",
+  heading: "Instant Intelligence for your Web3 Product",
   subheading: "Nuwa is a pioneering Agent-as-a-Service (AaaS) solution that enables any on-chain protocol, platform, or application to deploy customized AI agents with minimal technical overhead.",
   ctaButton: "Join Early Access"
 };
