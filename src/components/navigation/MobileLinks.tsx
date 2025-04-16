@@ -1,6 +1,6 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { LinkType } from "../../constants/navLinks";
+import { LinkType } from "@/components/navigation/DesktopLinks";
 
 export const MobileLinks = ({
   links,
