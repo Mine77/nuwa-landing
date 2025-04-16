@@ -20,28 +20,33 @@ export function getAllBlogPosts(): BlogPost[] {
         return [];
     }
 
-    const fileNames = fs.readdirSync(blogDirectory);
-    const allPostsData = fileNames
-        .filter((fileName) => fileName.endsWith('.md'))
-        .map((fileName) => {
-            const slug = fileName.replace(/\.md$/, '');
-            const fullPath = path.join(blogDirectory, fileName);
-            const fileContents = fs.readFileSync(fullPath, 'utf8');
-            const { data, content } = matter(fileContents);
+    try {
+        const fileNames = fs.readdirSync(blogDirectory);
+        const allPostsData = fileNames
+            .filter((fileName) => fileName.endsWith('.md'))
+            .map((fileName) => {
+                const slug = fileName.replace(/\.md$/, '');
+                const fullPath = path.join(blogDirectory, fileName);
+                const fileContents = fs.readFileSync(fullPath, 'utf8');
+                const { data, content } = matter(fileContents);
 
-            return {
-                slug,
-                title: data.title,
-                date: data.date,
-                author: data.author,
-                excerpt: data.excerpt,
-                coverImage: data.coverImage,
-                content,
-                tag: data.tag || "Blog",
-            };
-        });
+                return {
+                    slug,
+                    title: data.title,
+                    date: data.date,
+                    author: data.author,
+                    excerpt: data.excerpt,
+                    coverImage: data.coverImage,
+                    content,
+                    tag: data.tag || "Blog",
+                };
+            });
 
-    return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
+        return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
+    } catch (error) {
+        console.error('Error reading blog posts:', error);
+        return [];
+    }
 }
 
 export function getBlogPostBySlug(slug: string): BlogPost | null {
@@ -65,6 +70,7 @@ export function getBlogPostBySlug(slug: string): BlogPost | null {
             tag: data.tag || "Blog",
         };
     } catch (error) {
+        console.error(`Error reading blog post ${slug}:`, error);
         return null;
     }
 }

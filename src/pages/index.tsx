@@ -8,8 +8,15 @@ import { font } from "@/fonts";
 import { BlogCarousel } from "@/components/blog/BlogCarousel";
 import { FinalCTA } from "@/components/final-cta/FinalCTA";
 import { Footer } from "@/components/footer/Footer";
+import { getAllBlogPosts } from "@/lib/blog";
+import { GetStaticProps } from "next";
+import { BlogPost } from "@/lib/blog";
 
-export default function Home() {
+interface HomeProps {
+  posts: BlogPost[];
+}
+
+export default function Home({ posts }: HomeProps) {
   return (
     <main className={`${font.className} overflow-hidden`}>
       <ExpandableNavBar links={NAV_LINKS}>
@@ -19,10 +26,20 @@ export default function Home() {
       <div className="space-y-36 bg-zinc-50 pb-24 pt-24 md:pt-32">
         <FeatureToggles />
         <BenefitsGrid />
-        <BlogCarousel />
+        <BlogCarousel posts={posts} />
       </div>
       <FinalCTA />
       <Footer />
     </main>
   );
 }
+
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+  const posts = getAllBlogPosts();
+
+  return {
+    props: {
+      posts,
+    },
+  };
+};
