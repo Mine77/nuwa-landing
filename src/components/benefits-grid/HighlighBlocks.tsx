@@ -1,15 +1,12 @@
 import React from "react";
 import { Block } from "./Block";
 import {
-  FiArrowUpRight,
-  FiClipboard,
-  FiCoffee,
   FiDollarSign,
-  FiFeather,
-  FiInbox,
-  FiMove,
-  FiRepeat,
-  FiSmile,
+  FiActivity,
+  FiZap,
+  FiAward,
+  FiUserCheck,
+  FiUsers,
 } from "react-icons/fi";
 import { IconType } from "react-icons";
 import { twMerge } from "tailwind-merge";
@@ -22,57 +19,40 @@ export const HighlighBlocks = () => {
       <HighlightBlock
         Icon={FiDollarSign}
         iconClassName="text-green-500"
-        title="Save on planning"
-        subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+        title="No Setup Cost"
+        subtitle="Nuwa offers out-of-the-box solution, eliminating the need for setup costs."
       />
       <HighlightBlock
-        Icon={FiArrowUpRight}
-        iconClassName="text-pink-500"
-        title="Grow your margins"
-        subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit."
-      />
-      <HighlightBlock
-        Icon={FiSmile}
-        iconClassName="text-blue-500"
-        title="Increase productivity"
-        subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit."
-      />
-      <HighlightBlock
-        Icon={FiCoffee}
-        iconClassName="text-orange-500"
-        title="No more late nights"
-        subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit."
-      />
-      <HighlightBlock
-        Icon={FiFeather}
-        iconClassName="text-zinc-500"
-        title="Take better notes"
-        subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit."
-      />
-      <HighlightBlock
-        Icon={FiInbox}
+        Icon={FiActivity}
         iconClassName="text-purple-500"
-        title="Reach inbox zero"
-        subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+        title="Usage-Based Pricing"
+        subtitle="Only pay when users interact with your agent, eliminating maintenance costs and ensuring ROI on every transaction."
       />
       <HighlightBlock
-        Icon={FiMove}
-        iconClassName="text-fuchsia-500"
-        title="Remain flexible"
-        subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+        Icon={FiZap}
+        iconClassName="text-orange-500"
+        title="Enhanced Functionality"
+        subtitle="Unlock new product capabilities that would be difficult to implement through traditional user interfaces."
       />
       <HighlightBlock
-        Icon={FiClipboard}
-        iconClassName="text-red-500"
-        title="Stay on track"
-        subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+        Icon={FiAward}
+        iconClassName="text-pink-500"
+        title="Brand Control"
+        subtitle="Maintain your unique branding and user experience."
       />
       <HighlightBlock
-        Icon={FiRepeat}
-        iconClassName="text-yellow-500"
-        title="Repeat what works"
-        subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+        Icon={FiUserCheck}
+        iconClassName="text-blue-500"
+        title="User Sovereignty"
+        subtitle="Keep valuable user interaction within your ecosystem."
       />
+      <HighlightBlock
+        Icon={FiUsers}
+        iconClassName="text-zinc-500"
+        title="Expanded User Base"
+        subtitle="A shared user base with Nuwa can expand your user base on the day-1 of your agent launch."
+      />
+
     </>
   );
 };

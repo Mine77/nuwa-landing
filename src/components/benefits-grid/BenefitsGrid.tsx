@@ -8,7 +8,7 @@ import { SectionSubheading } from "../shared/SectionSubheading";
 import { Button } from "../shared/Button";
 
 const BENEFITS_GRID_TEXTS = {
-  heading: "Why Protocols Choose Nuwa",
+  heading: "Why Choose Nuwa for Your Web3 Protocol",
   subheading: "Transform your Web3 offering with AI agents that make complex features accessible to mainstream users while unlocking entirely new capabilities.",
   ctaButton: "Explore Solutions"
 };
