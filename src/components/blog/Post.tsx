@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export const CARD_WIDTH = 350;
 export const MARGIN = 20;
 
@@ -7,10 +9,11 @@ export type PostType = {
   tag: string;
   title: string;
   description: string;
+  slug?: string;
 };
 
-export const Post = ({ imgUrl, tag, title, description }: PostType) => {
-  return (
+export const Post = ({ imgUrl, tag, title, description, slug }: PostType) => {
+  const PostContent = () => (
     <div
       className="group relative shrink-0 cursor-pointer"
       style={{
@@ -30,4 +33,14 @@ export const Post = ({ imgUrl, tag, title, description }: PostType) => {
       <p className="text-sm">{description}</p>
     </div>
   );
+
+  if (slug) {
+    return (
+      <Link href={`/blog/${slug}`} className="group relative cursor-pointer">
+        <PostContent />
+      </Link>
+    );
+  }
+
+  return <PostContent />;
 };

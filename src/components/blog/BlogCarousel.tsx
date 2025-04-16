@@ -30,6 +30,7 @@ export const BlogCarousel = ({ posts }: BlogCarouselProps) => {
     tag: post.tag,
     title: post.title,
     description: post.excerpt,
+    slug: post.slug,
   }));
 
   const CARD_BUFFER =
