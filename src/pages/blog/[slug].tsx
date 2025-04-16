@@ -5,7 +5,8 @@ import { font } from "@/fonts";
 import { getBlogPostBySlug, getAllBlogPosts } from "@/lib/blog";
 import { GetStaticProps, GetStaticPaths } from "next";
 import Image from "next/image";
-import ReactMarkdown from "react-markdown";
+import { MDXRemote } from "next-mdx-remote";
+import { serialize } from "next-mdx-remote/serialize";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import rehypeSanitize from "rehype-sanitize";
@@ -18,7 +19,7 @@ interface BlogPostPageProps {
         author: string;
         excerpt: string;
         coverImage: string;
-        content: string;
+        content: any; // MDX content
     };
 }
 
@@ -41,12 +42,7 @@ export default function BlogPost({ post }: BlogPostPageProps) {
                         {new Date(post.date).toLocaleDateString()} • {post.author}
                     </p>
                     <div className="prose prose-lg max-w-none">
-                        <ReactMarkdown
-                            remarkPlugins={[remarkGfm]}
-                            rehypePlugins={[rehypeRaw, rehypeSanitize]}
-                        >
-                            {post.content}
-                        </ReactMarkdown>
+                        <MDXRemote {...post.content} />
                     </div>
                 </div>
             </article>
@@ -77,9 +73,20 @@ export const getStaticProps: GetStaticProps<BlogPostPageProps> = async ({ params
         };
     }
 
+    // 序列化 MDX 内容
+    const mdxSource = await serialize(post.content, {
+        mdxOptions: {
+            remarkPlugins: [remarkGfm],
+            rehypePlugins: [rehypeRaw, rehypeSanitize],
+        },
+    });
+
     return {
         props: {
-            post,
+            post: {
+                ...post,
+                content: mdxSource,
+            },
         },
     };
 }; 
