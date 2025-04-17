@@ -21,6 +21,12 @@ dependencies:
   '@types/mdx':
     specifier: ^2.0.13
     version: 2.0.13
+  '@web3icons/core':
+    specifier: ^4.0.13
+    version: 4.0.13(typescript@5.8.3)
+  '@web3icons/react':
+    specifier: ^4.0.13
+    version: 4.0.13(react@19.1.0)(typescript@5.8.3)
   class-variance-authority:
     specifier: ^0.7.0
     version: 0.7.1
@@ -1034,6 +1040,34 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@web3icons/common@0.11.10(typescript@5.8.3):
+    resolution: {integrity: sha512-j7aHyK4Bw8VX06KvEdIKqoM4AJUSjC6ReiZg+1OChfUce2AjHhE2It/LbaQQ2+Gxw9d6m0eyYkmcVvZMFRlUhQ==}
+    peerDependencies:
+      typescript: ^5.0.0
+    dependencies:
+      typescript: 5.8.3
+    dev: false
+
+  /@web3icons/core@4.0.13(typescript@5.8.3):
+    resolution: {integrity: sha512-TFztaouekeQBzC4FaZM9RXFubV1Zg1ZetOn8TRr+6wzcfC3u5TPlgb6uM4hRZsdduRbzFCi1aU+eJbOANImpMQ==}
+    peerDependencies:
+      typescript: ^5.0.0
+    dependencies:
+      '@web3icons/common': 0.11.10(typescript@5.8.3)
+      typescript: 5.8.3
+    dev: false
+
+  /@web3icons/react@4.0.13(react@19.1.0)(typescript@5.8.3):
+    resolution: {integrity: sha512-JF10cZFVCMYKhhpVOfHufB1qHIDMZ02LYibECmrQ50zcQxiTmqbSkvrv5LHhnSjLMuvo0wRLsa092ig0cp+dLg==}
+    peerDependencies:
+      react: ^18.2.0
+    dependencies:
+      '@web3icons/common': 0.11.10(typescript@5.8.3)
+      react: 19.1.0
+    transitivePeerDependencies:
+      - typescript
+    dev: false
 
   /acorn-jsx@5.3.2(acorn@8.14.1):
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -5037,7 +5071,6 @@ packages:
     resolution: {integrity: sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ==}
     engines: {node: '>=14.17'}
     hasBin: true
-    dev: true
 
   /unbox-primitive@1.1.0:
     resolution: {integrity: sha512-nWJ91DjeOkej/TA8pXQ3myruKpKEYgqvpw9lz4OPHj/NWFNluYrjbz9j01CJ8yKQd2g4jFoOkINCTW2I5LEEyw==}

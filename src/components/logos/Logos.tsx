@@ -1,28 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 import {
-  SiNike,
-  Si3M,
-  SiAbstract,
-  SiAdobe,
-  SiAirtable,
-  SiAmazon,
-  SiBox,
-  SiBytedance,
-  SiChase,
-  SiCloudbees,
-  SiBurton,
-  SiBmw,
-  SiHeroku,
-  SiBuildkite,
-  SiCouchbase,
-  SiDailymotion,
-  SiDeliveroo,
-  SiEpicgames,
-  SiGenius,
-  SiGodaddy,
-} from "react-icons/si";
-import { IconType } from "react-icons";
+  ExchangeIcon,
+  NetworkIcon,
+  TokenIcon,
+  WalletIcon,
+  tokenIcons
+} from "@web3icons/react";
 
 export const Logos = () => {
   return (
@@ -75,7 +59,8 @@ const TranslateWrapper = ({
   );
 };
 
-const LogoItem = ({ Icon, name }: { Icon: IconType; name: string }) => {
+// 自定义 LogoItem 组件，适应 @web3icons/react 库的图标
+const LogoItem = ({ Icon, name }: { Icon: React.ComponentType<any>; name: string }) => {
   return (
     <span className="flex items-center justify-center gap-4 px-4 py-2 md:py-4">
       <Icon className="text-2xl text-indigo-600 md:text-3xl" />
@@ -88,30 +73,30 @@ const LogoItem = ({ Icon, name }: { Icon: IconType; name: string }) => {
 
 const LogoItemsTop = () => (
   <>
-    <LogoItem Icon={SiNike} name="Nike" />
-    <LogoItem Icon={Si3M} name="3M" />
-    <LogoItem Icon={SiAbstract} name="Abstract" />
-    <LogoItem Icon={SiAdobe} name="Adobe" />
-    <LogoItem Icon={SiAirtable} name="Airtable" />
-    <LogoItem Icon={SiAmazon} name="Amazon" />
-    <LogoItem Icon={SiBox} name="Box" />
-    <LogoItem Icon={SiBytedance} name="Bytedance" />
-    <LogoItem Icon={SiChase} name="Chase" />
-    <LogoItem Icon={SiCloudbees} name="Cloudebees" />
+    <LogoItem Icon={tokenIcons.Token1INCH} name="1inch" />
+    <LogoItem Icon={tokenIcons.TokenAAVE} name="Aave" />
+    <LogoItem Icon={tokenIcons.TokenUNI} name="Uniswap" />
+    <LogoItem Icon={tokenIcons.TokenDAI} name="MakerDAO" />
+    <LogoItem Icon={tokenIcons.TokenAPE} name="ApeCoin" />
+    <LogoItem Icon={tokenIcons.TokenPEPE} name="Pepe" />
+    <LogoItem Icon={tokenIcons.TokenCRV} name="Curve" />
+    <LogoItem Icon={tokenIcons.TokenCOMP} name="Compound" />
+    <LogoItem Icon={tokenIcons.TokenAXS} name="Axie Infinity" />
+    <LogoItem Icon={tokenIcons.TokenAR} name="Arweave" />
   </>
 );
 
 const LogoItemsBottom = () => (
   <>
-    <LogoItem Icon={SiBmw} name="BMW" />
-    <LogoItem Icon={SiBurton} name="Burton" />
-    <LogoItem Icon={SiBuildkite} name="Buildkite" />
-    <LogoItem Icon={SiCouchbase} name="Couchbase" />
-    <LogoItem Icon={SiDailymotion} name="Dailymotion" />
-    <LogoItem Icon={SiDeliveroo} name="deliveroo" />
-    <LogoItem Icon={SiEpicgames} name="Epic Games" />
-    <LogoItem Icon={SiGenius} name="Genius" />
-    <LogoItem Icon={SiGodaddy} name="GoDaddy" />
-    <LogoItem Icon={SiHeroku} name="Heroku" />
+    <LogoItem Icon={tokenIcons.TokenTON} name="Ton" />
+    <LogoItem Icon={tokenIcons.TokenBTC} name="Bitcoin" />
+    <LogoItem Icon={tokenIcons.TokenDOGE} name="Dogecoin" />
+    <LogoItem Icon={tokenIcons.TokenOP} name="Optimism" />
+    <LogoItem Icon={tokenIcons.TokenETH} name="Ethereum" />
+    <LogoItem Icon={tokenIcons.TokenSUI} name="Sui" />
+    <LogoItem Icon={tokenIcons.TokenMATIC} name="Polygon" />
+    <LogoItem Icon={tokenIcons.TokenSOL} name="Solana" />
+    <LogoItem Icon={tokenIcons.TokenUSDT} name="Tether" />
+    <LogoItem Icon={tokenIcons.TokenAPT} name="Aptos" />
   </>
 );
