@@ -13,7 +13,7 @@ import { GetStaticProps } from "next";
 import { BlogPost } from "@/lib/blog";
 import { motion, useInView } from "framer-motion";
 import { useRef, ReactNode } from "react";
-
+import { Usecases } from "@/components/supports/Usecases";
 interface HomeProps {
   posts: BlogPost[];
 }
@@ -72,15 +72,19 @@ export default function Home({ posts }: HomeProps) {
         </AnimatedSection>
 
         <AnimatedSection delay={0.4}>
+          <Usecases />
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.5}>
           <BlogCarousel posts={posts} />
         </AnimatedSection>
       </div>
 
-      <AnimatedSection delay={0.5}>
+      <AnimatedSection delay={0.6}>
         <FinalCTA />
       </AnimatedSection>
 
-      <AnimatedSection delay={0.6}>
+      <AnimatedSection delay={0.7}>
         <Footer />
       </AnimatedSection>
     </main>

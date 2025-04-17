@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Users } from "./Users";
 import { Copy } from "./Copy";
 
-export const Supports = () => {
+export const Usecases = () => {
   const [selected, setSelected] = useState(1);
 
   return (
