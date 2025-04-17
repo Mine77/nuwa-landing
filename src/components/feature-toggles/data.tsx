@@ -25,10 +25,26 @@ export const data = [
   },
   {
     id: 4,
-    title: "Documentation",
-    svgUrl: "https://api.dicebear.com/8.x/shapes/svg?seed=Documentation",
-    cardTitle: "Title for Documentation feature",
+    title: "Multi-Agent Routing",
+    svgUrl: "https://api.dicebear.com/8.x/shapes/svg?seed=MultiAgentRouting",
+    cardTitle: "Multi-Agent Routing",
     cardSubtitle:
-      "Explain what the Documentation feature and why it's different or better than your competitors.",
+      "Our Multi-Agent Routing technology intelligently processes complex user requests across Nuwa agents.",
   },
+  {
+    id: 5,
+    title: "zkTLS",
+    svgUrl: "https://api.dicebear.com/8.x/shapes/svg?seed=zkTLS",
+    cardTitle: "zkTLS",
+    cardSubtitle:
+      "Zero-Knowledge Transport Layer Security (zkTLS) secures the connection between LLM providers and Nuwa agents.",
+  },
+  {
+    id: 6,
+    title: "Smart Session Key",
+    svgUrl: "https://api.dicebear.com/8.x/shapes/svg?seed=SmartSessionKey",
+    cardTitle: "Smart Session Key",
+    cardSubtitle:
+      "Our Smart Session Key system revolutionizes how user assets are managed for agent operations.",
+  }
 ];
