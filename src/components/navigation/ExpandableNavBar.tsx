@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from "react";
 import { motion } from "framer-motion";
-import { FiMenu } from "react-icons/fi";
+import { FiMenu, FiArrowRight } from "react-icons/fi";
 import { Logo } from "./Logo";
 import { DesktopLinks, LinkType } from "./DesktopLinks";
 import { MobileLinks } from "./MobileLinks";
@@ -26,8 +26,16 @@ export const ExpandableNavBar = ({
               <Logo />
               <DesktopLinks links={links} />
             </div>
-            <Button className="hidden md:block" intent="secondary" size="small">
-              <span className="font-bold">Get started</span>
+            <Button
+              className="hidden md:block"
+              intent="secondary"
+              size="small"
+              onClick={() => window.open('https://test.nuwa.dev/', '_blank')}
+            >
+              <span className="font-bold flex items-center">
+                Try Nuwa Alpha
+                <FiArrowRight className="ml-1" />
+              </span>
             </Button>
             <button
               onClick={() => setMobileNavOpen((pv) => !pv)}

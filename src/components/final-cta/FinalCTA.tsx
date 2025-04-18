@@ -5,7 +5,7 @@ import TerminalContact from "./TerminalContact";
 
 const FINAL_CTA_TEXTS = {
   heading: "Become an Early Adopter",
-  subheading: "Join our Early Access Program and receive free integration, first month free, plus a 30% lifetime discount. Limited spots available.",
+  subheading: "Join our Early Access Program and receive free integration plus a 30% lifetime discount. Limited spots available.",
 };
 
 export const FinalCTA = () => {

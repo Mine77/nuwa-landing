@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { FiCheckCircle } from "react-icons/fi";
 import { Fragment, useEffect, useRef, useState } from "react";
+import { submitFormToAirtable, FormData } from "../../services/airtable";
 
 interface Question {
     key: string;
@@ -170,20 +171,40 @@ interface SummaryProps {
 
 const Summary: React.FC<SummaryProps> = ({ questions, setQuestions }) => {
     const [complete, setComplete] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [error, setError] = useState<string | null>(null);
 
     const handleReset = () => {
         setQuestions((pv) => pv.map((q) => ({ ...q, value: "", complete: false })));
+        setComplete(false);
+        setError(null);
     };
 
-    const handleSend = () => {
-        const formData = questions.reduce<Record<string, string>>((acc, val) => {
-            return { ...acc, [val.key]: val.value };
-        }, {});
+    const handleSend = async () => {
+        setIsSubmitting(true);
+        setError(null);
 
-        // Send this data to your server or whatever :)
-        console.log(formData);
+        const formData: FormData = {
+            email: questions.find(q => q.key === "email")?.value || "",
+            agentname: questions.find(q => q.key === "agentname")?.value || "",
+            product: questions.find(q => q.key === "product")?.value,
+            description: questions.find(q => q.key === "description")?.value
+        };
 
-        setComplete(true);
+        try {
+            const success = await submitFormToAirtable(formData);
+
+            if (success) {
+                setComplete(true);
+            } else {
+                setError("Submit failed, please try again later");
+            }
+        } catch (err) {
+            console.error("Submit form error:", err);
+            setError("Submit form error, please try again later");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -203,19 +224,26 @@ const Summary: React.FC<SummaryProps> = ({ questions, setQuestions }) => {
                     <span>Sent! We'll get back to you ASAP 😎</span>
                 </p>
             ) : (
-                <div className="flex gap-2 mt-2">
-                    <button
-                        onClick={handleReset}
-                        className="px-3 py-1 text-base hover:opacity-90 transition-opacity rounded bg-slate-100 text-black"
-                    >
-                        Restart
-                    </button>
-                    <button
-                        onClick={handleSend}
-                        className="px-3 py-1 text-base hover:opacity-90 transition-opacity rounded bg-indigo-500 text-white"
-                    >
-                        Send it!
-                    </button>
+                <div className="flex flex-col gap-2 mt-2">
+                    {error && (
+                        <p className="text-red-400">{error}</p>
+                    )}
+                    <div className="flex gap-2">
+                        <button
+                            onClick={handleReset}
+                            className="px-3 py-1 text-base hover:opacity-90 transition-opacity rounded bg-slate-100 text-black"
+                            disabled={isSubmitting}
+                        >
+                            Restart
+                        </button>
+                        <button
+                            onClick={handleSend}
+                            className="px-3 py-1 text-base hover:opacity-90 transition-opacity rounded bg-indigo-500 text-white"
+                            disabled={isSubmitting}
+                        >
+                            {isSubmitting ? "Sending..." : "Send it!"}
+                        </button>
+                    </div>
                 </div>
             )}
         </>
