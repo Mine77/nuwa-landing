@@ -141,6 +141,20 @@ const CampaignContent = () => {
                 variants={fadeInUp}
                 className="max-w-6xl mx-auto"
             >
+                <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="text-center mb-12"
+                >
+                    <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
+                        Nuwa Campaign Hub
+                    </h1>
+                    <p className="mt-3 text-lg text-slate-600">
+                        Explore, Connect, and Compete in Our Interactive Campaigns
+                    </p>
+                </motion.div>
+
                 <div className="mb-8">
                     <div className="grid gap-4 grid-cols-1 md:grid-cols-4">
                         <Card
