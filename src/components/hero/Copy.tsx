@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { FiArrowUpRight } from "react-icons/fi";
 import { Button } from "../shared/Button";
 import { motion } from "framer-motion";
@@ -76,6 +76,15 @@ export const Copy = () => {
   // 从OPTIONS中提取标题作为动画文本的phrases
   const phrases = OPTIONS.map(option => option.title);
 
+  // 添加滚动到CTA部分的函数
+  const scrollToCTA = () => {
+    // 使用id选择器精确定位CTA部分
+    const ctaSection = document.getElementById('final-cta');
+    if (ctaSection) {
+      ctaSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <>
       <div className="mb-1.5 rounded-full bg-zinc-600">
@@ -121,7 +130,7 @@ export const Copy = () => {
       <p className="mx-auto my-4 max-w-3xl text-center text-base leading-relaxed md:my-6 md:text-2xl md:leading-relaxed">
         {HERO_TEXTS.subheading}
       </p>
-      <Button>
+      <Button onClick={scrollToCTA}>
         <span className="font-bold">{HERO_TEXTS.ctaButton}</span>
       </Button>
     </>
