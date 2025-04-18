@@ -9,7 +9,7 @@ const HERO_TEXTS = {
   productHuntBadge: "NEW!",
   productHuntText: "Early Access Now Open!",
   heading: "Secured Intelligence for",
-  subheading: "Nuwa is a pioneering Agent-as-a-Service (AaaS) solution that enables any on-chain protocol, platform, or application to deploy customized AI agents with minimal technical overhead.",
+  subheading: "Empowering Web3 protocols with Agent-as-a-Service (AaaS) that simplify user experience and unlock new capabilities—zero technical overhead required",
   ctaButton: "Join Early Access"
 };
 
