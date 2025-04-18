@@ -1,17 +1,29 @@
 import { MotionConfig, motion } from "framer-motion";
+import Image from "next/image";
 
-const Testimonial = ({
-  imgSrc,
-  name,
+// 使用Nuwa官方logo作为代理图标
+const AgentIcon = () => (
+  <div className="flex-shrink-0 mr-2">
+    <div className="rounded-full border-2 border-indigo-600 bg-white p-1 flex items-center justify-center">
+      <Image
+        src="/nuwa.svg"
+        alt="Nuwa Agent"
+        width={20}
+        height={20}
+        className="text-indigo-600"
+      />
+    </div>
+  </div>
+);
+
+const ChatBox = ({
   title,
   company,
-  content,
+  messages,
 }: {
-  imgSrc: string;
-  name: string;
   title: string;
   company: string;
-  content: string;
+  messages: { role: "user" | "agent"; content: string }[];
 }) => (
   <MotionConfig
     transition={{
@@ -31,26 +43,7 @@ const Testimonial = ({
       }}
       className="w-full overflow-hidden rounded-lg border-2 border-zinc-900 bg-white p-8 md:p-12"
     >
-      <div className="mb-6 flex items-center gap-6">
-        <div className="rounded-lg bg-zinc-900">
-          <motion.img
-            initial={{
-              rotate: "0deg",
-              opacity: 0,
-            }}
-            animate={{
-              rotate: "3deg",
-              opacity: 1,
-            }}
-            exit={{
-              rotate: "0deg",
-              opacity: 0,
-            }}
-            src={imgSrc}
-            alt="avatar"
-            className="size-24 rounded-lg border-2 border-zinc-900 bg-indigo-200"
-          />
-        </div>
+      <div className="mb-6">
         <motion.div
           initial={{
             y: 12,
@@ -64,140 +57,149 @@ const Testimonial = ({
             y: -12,
             opacity: 0,
           }}
+          className="flex items-center"
         >
-          <span className="mb-1.5 block text-3xl font-medium">{name}</span>
-          <span className="text-zinc-600">
-            {title} – <span className="text-indigo-600">{company}</span>
-          </span>
+          <div className="rounded-full bg-white p-1.5 flex items-center justify-center mr-3">
+            <Image
+              src="/nuwa.svg"
+              alt="Nuwa Agent"
+              width={32}
+              height={32}
+              className="text-indigo-600"
+            />
+          </div>
+          <div>
+            <span className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">{title}</span>
+          </div>
         </motion.div>
       </div>
-      <motion.p
-        initial={{
-          y: 12,
-          opacity: 0,
-        }}
-        animate={{
-          y: 0,
-          opacity: 1,
-        }}
-        exit={{
-          y: -12,
-          opacity: 0,
-        }}
-        className="text-xl leading-relaxed"
-      >
-        {content}
-      </motion.p>
+
+      <div className="space-y-4">
+        {messages.map((message, index) => (
+          <motion.div
+            key={index}
+            initial={{
+              y: 12,
+              opacity: 0,
+            }}
+            animate={{
+              y: 0,
+              opacity: 1,
+            }}
+            exit={{
+              y: -12,
+              opacity: 0,
+            }}
+            className={`flex ${message.role === "user" ? "justify-end" : "justify-start"} items-start`}
+          >
+            <div
+              className={`max-w-[80%] rounded-lg p-4 ${message.role === "user"
+                ? "bg-indigo-600 text-white"
+                : "bg-zinc-100 text-zinc-900"
+                }`}
+            >
+              <p className="text-lg leading-relaxed">{message.content}</p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
     </motion.div>
   </MotionConfig>
 );
 
 export const OPTIONS = [
   {
-    title: "Startups",
+    title: "DeFi",
     Content: () => (
-      <Testimonial
-        imgSrc="https://api.dicebear.com/8.x/notionists/svg?seed=Jeff"
-        name="Jeff W."
-        title="CEO"
-        company="The Company"
-        content="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit qui unde perspiciatis nam in maxime impedit repudiandae veniam quibusdam enim, velit minus necessitatibus quaerat quos similique, odio earum!"
+      <ChatBox
+        title="DeFi Guardian"
+        company="DeFi Protocol"
+        messages={[
+          {
+            role: "user",
+            content: "Rebalance my loan to avoid liquidation"
+          },
+          {
+            role: "agent",
+            content: "I'll help you rebalance your loan. I've analyzed your current position and market conditions. I'll adjust your collateral to maintain a safe health factor and prevent liquidation."
+          }
+        ]}
       />
     ),
   },
   {
-    title: "YouTubers",
+    title: "Launchpad",
     Content: () => (
-      <Testimonial
-        imgSrc="https://api.dicebear.com/8.x/notionists/svg?seed=Dan"
-        name="Dan S."
-        title="YouTuber"
-        company="@TheChannel"
-        content="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis qui fuga, deserunt doloribus, vero autem libero sed dolorum nostrum quidem in soluta magni eos excepturi."
+      <ChatBox
+        title="Launch Scout"
+        company="Launch Platform"
+        messages={[
+          {
+            role: "user",
+            content: "Find me projects with strong tokenomics launching next week"
+          },
+          {
+            role: "agent",
+            content: "I've found 3 promising projects launching next week with strong tokenomics, including vesting schedules, team allocations, and utility-focused token models. Would you like me to provide detailed analysis for each?"
+          }
+        ]}
       />
     ),
   },
   {
-    title: "Bloggers",
+    title: "GameFi",
     Content: () => (
-      <Testimonial
-        imgSrc="https://api.dicebear.com/8.x/notionists/svg?seed=Carey"
-        name="Carey J."
-        title="Writer"
-        company="theblog.com"
-        content="Lorem ipsum dolor sit amet consectetur adipisicing elit. At, quo harum."
+      <ChatBox
+        title="GameFi Strategist"
+        company="GameFi Studio"
+        messages={[
+          {
+            role: "user",
+            content: "Sell my rare items when prices peak and reinvest in breeding my NFT creatures"
+          },
+          {
+            role: "agent",
+            content: "I'll monitor market prices for your rare items and execute the sale when they reach peak value. Then I'll automatically reinvest the proceeds into breeding your NFT creatures for optimal returns."
+          }
+        ]}
       />
     ),
   },
   {
-    title: "Authors",
+    title: "DEX",
     Content: () => (
-      <Testimonial
-        imgSrc="https://api.dicebear.com/8.x/notionists/svg?seed=Dani"
-        name="Moriah H."
-        title="Author"
-        company="Books About Things"
-        content="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis qui fuga, deserunt doloribus, vero autem libero sed dolorum nostrum quidem in soluta magni eos excepturi."
+      <ChatBox
+        title="DEX Navigator"
+        company="Decentralized Exchange"
+        messages={[
+          {
+            role: "user",
+            content: "Set a limit order for ETH at $3,000 and alert me if XYZ token drops 5%"
+          },
+          {
+            role: "agent",
+            content: "I've set up your limit order for ETH at $3,000. I'll also monitor XYZ token's price and notify you immediately if it drops by 5% from current levels."
+          }
+        ]}
       />
     ),
   },
   {
-    title: "Designers",
+    title: "Money Market",
     Content: () => (
-      <Testimonial
-        imgSrc="https://api.dicebear.com/8.x/notionists/svg?seed=Phil"
-        name="Phil K."
-        title="UI/UX Design"
-        company="The Other Company"
-        content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex a laborum earum quo unde pariatur consequuntur molestias!"
-      />
-    ),
-  },
-  {
-    title: "Consultants",
-    Content: () => (
-      <Testimonial
-        imgSrc="https://api.dicebear.com/8.x/notionists/svg?seed=Stetson"
-        name="Stetson R."
-        title="Consultant"
-        company="The Company Company"
-        content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, dicta. Doloremque, hic magnam? Eveniet quisquam porro rerum, voluptatem et aliquam eaque nesciunt quod magni veritatis tempora ducimus!"
-      />
-    ),
-  },
-  {
-    title: "Photographers",
-    Content: () => (
-      <Testimonial
-        imgSrc="https://api.dicebear.com/8.x/notionists/svg?seed=Patty"
-        name="Patty G."
-        title="Photographer"
-        company="@ThePictureLady"
-        content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, quam? Quia veniam cupiditate officiis."
-      />
-    ),
-  },
-  {
-    title: "Videographers",
-    Content: () => (
-      <Testimonial
-        imgSrc="https://api.dicebear.com/8.x/notionists/svg?seed=Kert"
-        name="Kert Y."
-        title="Film Maker"
-        company="@MovieDude"
-        content="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste, eius corrupti! Alias dolore quibusdam ipsum magnam delectus nulla sint harum ab?"
-      />
-    ),
-  },
-  {
-    title: "Local Business",
-    Content: () => (
-      <Testimonial
-        imgSrc="https://api.dicebear.com/8.x/notionists/svg?seed=Joanne"
-        name="Joanne F."
-        title="Business Owner"
-        company="The Local Company"
-        content="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis qui fuga, deserunt doloribus, vero autem libero sed dolorum nostrum quidem in soluta magni eos excepturi."
+      <ChatBox
+        title="Yield Optimizer"
+        company="Money Market Protocol"
+        messages={[
+          {
+            role: "user",
+            content: "What are the current lending rates on your platform?"
+          },
+          {
+            role: "agent",
+            content: "Our lending rates are dynamically adjusted based on supply and demand. Currently, stablecoin lending rates range from 3-8% APY."
+          }
+        ]}
       />
     ),
   },
