@@ -7,10 +7,11 @@ import { SessionProvider, useSession } from "next-auth/react";
 import { Chat } from "@/components/chat/Chat";
 import { UserProfilePanel } from "@/components/profile/UserProfilePanel";
 import { Leaderboard } from "@/components/leaderboard/Leaderboard";
-import { FiUser, FiMessageSquare, FiAward } from "react-icons/fi";
+import { FiUser, FiMessageSquare, FiAward, FiGrid } from "react-icons/fi";
 import { useState } from "react";
 import { IconType } from "react-icons";
 import { GridHoverHero } from "@/components/hero/GridHoverHero";
+import { GridCards } from "@/components/other-campaign/GridCards";
 
 // 定义淡入动画变体
 const fadeInUp = {
@@ -96,6 +97,17 @@ const CampaignContent = () => {
                         <Leaderboard />
                     </motion.div>
                 );
+            case "other":
+                return (
+                    <motion.div
+                        initial="hidden"
+                        animate="visible"
+                        variants={fadeInUp}
+                        key="other"
+                    >
+                        <GridCards />
+                    </motion.div>
+                );
             default:
                 return (
                     <motion.div
@@ -130,7 +142,7 @@ const CampaignContent = () => {
                 className="max-w-6xl mx-auto"
             >
                 <div className="mb-8">
-                    <div className="grid gap-4 grid-cols-1 md:grid-cols-3">
+                    <div className="grid gap-4 grid-cols-1 md:grid-cols-4">
                         <Card
                             title="My Profile"
                             subtitle="Manage your profile"
@@ -139,11 +151,19 @@ const CampaignContent = () => {
                             onClick={() => setActiveTab("profile")}
                         />
                         <Card
-                            title="Agent"
+                            title="Agent Campaign"
                             subtitle="Chat with the agent"
                             Icon={FiMessageSquare}
                             isActive={activeTab === "chat"}
                             onClick={() => setActiveTab("chat")}
+                        />
+
+                        <Card
+                            title="Other Campaign"
+                            subtitle="Explore other campaigns"
+                            Icon={FiGrid}
+                            isActive={activeTab === "other"}
+                            onClick={() => setActiveTab("other")}
                         />
                         <Card
                             title="Leaderboard"
