@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { FiAward } from "react-icons/fi";
 import { getLeaderboardData, LeaderboardUser } from "../../services/airtable";
+import { BarLoader } from "./BarLoader";
 
 // 使用Airtable数据接口
 interface User extends LeaderboardUser { }
@@ -75,8 +76,8 @@ const Table = () => {
 
     if (loading) {
         return (
-            <div className="w-full bg-white shadow-lg rounded-lg p-8 text-center">
-                <p>Loading leaderboard data...</p>
+            <div className="w-full p-8 text-center min-h-[200px] flex items-center justify-center">
+                <BarLoader />
             </div>
         );
     }
