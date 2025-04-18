@@ -6,8 +6,8 @@ import { motion } from "framer-motion";
 import { OPTIONS } from "../supports/options";
 
 const HERO_TEXTS = {
-  productHuntBadge: "NEW!",
-  productHuntText: "Early Access Now Open!",
+  huntBadge: "New!",
+  huntText: "Early Access Now Open!",
   heading: "Secured Intelligence for",
   subheading: "Empowering Web3 protocols with Agent-as-a-Service (AaaS) that simplify user experience and unlock new capabilities—zero technical overhead required",
   ctaButton: "Join Early Access"
@@ -89,16 +89,18 @@ export const Copy = () => {
     <>
       <div className="mb-1.5 rounded-full bg-zinc-600">
         <Link
-          href="https://www.producthunt.com/"
-          target="_blank"
-          rel="nofollow"
+          href="#final-cta"
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToCTA();
+          }}
           className="flex origin-top-left items-center rounded-full border border-zinc-900 bg-white p-0.5 text-sm transition-transform hover:-rotate-2"
         >
           <span className="rounded-full bg-[#FF6154] px-2 py-0.5 font-medium text-white">
-            {HERO_TEXTS.productHuntBadge}
+            {HERO_TEXTS.huntBadge}
           </span>
           <span className="ml-1.5 mr-1 inline-block">
-            {HERO_TEXTS.productHuntText}
+            {HERO_TEXTS.huntText}
           </span>
           <FiArrowUpRight className="mr-2 inline-block" />
         </Link>
