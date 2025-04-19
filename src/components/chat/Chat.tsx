@@ -90,6 +90,8 @@ export function Chat() {
 
             // 设置流式传输开始
             setIsStreaming(true);
+            // 保持加载状态为 true
+            setIsLoading(true);
 
             while (true) {
                 if (signal.aborted) break;
@@ -123,6 +125,14 @@ export function Chat() {
                         } catch (e) {
                             console.error('Failed to parse JSON:', e);
                         }
+                    } else if (event === 'start') {
+                        // 收到开始事件时显示加载指示器
+                        setIsLoading(true);
+                        setIsStreaming(false);
+                    } else if (event === 'done') {
+                        // 响应完成时结束加载状态
+                        setIsLoading(false);
+                        setIsStreaming(false);
                     }
                 });
             }

@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
-import { BarLoader } from '../leaderboard/BarLoader';
+import { LoadingDots } from './LoadingDots';
 import 'katex/dist/katex.min.css';
 import React from 'react';
 import Image from 'next/image';
@@ -153,7 +153,7 @@ export function Message({
 
                         {isLoading && !isStreaming && role === 'assistant' && (
                             <div className="flex items-center justify-center">
-                                <BarLoader />
+                                <LoadingDots />
                             </div>
                         )}
                     </div>
