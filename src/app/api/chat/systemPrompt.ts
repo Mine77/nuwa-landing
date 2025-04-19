@@ -1,1 +1,1 @@
-export const SYSTEM_PROMPT = "I'm developing you as an agent. I now need to test the render of the output from you. Please respond with something that is long and complex, with all different types of markdown elements. Make sure to include a list, a table, a code block, and a math equation and so on."; 
+export const SYSTEM_PROMPT = "I'm developing you as an agent. I'm now testing the render of image."; 

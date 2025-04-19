@@ -1,7 +1,12 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 import { BarLoader } from '../leaderboard/BarLoader';
+import 'katex/dist/katex.min.css';
+import React from 'react';
+import Image from 'next/image';
 
 interface MessageProps {
     content: string;
@@ -58,6 +63,39 @@ const markdownComponents = {
             {children}
         </blockquote>
     ),
+    img: ({ node, src, alt, ...props }: any) => {
+        const [isError, setIsError] = React.useState(false);
+
+        if (!src) {
+            return (
+                <div className="text-red-500 text-sm my-4">
+                    Invalid image source
+                </div>
+            );
+        }
+
+        return (
+            <div className="relative my-4 w-full">
+                {isError ? (
+                    <div className="text-red-500 text-sm">
+                        Failed to load image: {alt}
+                    </div>
+                ) : (
+                    <div className="relative w-full aspect-video">
+                        <Image
+                            src={src}
+                            alt={alt || ''}
+                            fill
+                            className="object-contain rounded-lg"
+                            onError={() => setIsError(true)}
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            priority={false}
+                        />
+                    </div>
+                )}
+            </div>
+        );
+    },
 };
 
 export function Message({
@@ -103,7 +141,8 @@ export function Message({
                             >
                                 <div className="prose dark:prose-invert max-w-none">
                                     <ReactMarkdown
-                                        remarkPlugins={[remarkGfm]}
+                                        remarkPlugins={[remarkGfm, remarkMath]}
+                                        rehypePlugins={[rehypeKatex]}
                                         components={markdownComponents}
                                     >
                                         {content}

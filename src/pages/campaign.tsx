@@ -155,42 +155,45 @@ const CampaignContent = () => {
                     </p>
                 </motion.div>
 
-                <div className="mb-8">
-                    <div className="grid gap-4 grid-cols-1 md:grid-cols-4">
-                        <Card
-                            title="My Profile"
-                            subtitle="Manage your profile"
-                            Icon={FiUser}
-                            isActive={activeTab === "profile"}
-                            onClick={() => setActiveTab("profile")}
-                        />
-                        <Card
-                            title="Agent Campaign"
-                            subtitle="Chat with the agent"
-                            Icon={FiMessageSquare}
-                            isActive={activeTab === "chat"}
-                            onClick={() => setActiveTab("chat")}
-                        />
-
-                        <Card
-                            title="Other Campaign"
-                            subtitle="Explore other campaigns"
-                            Icon={FiGrid}
-                            isActive={activeTab === "other"}
-                            onClick={() => setActiveTab("other")}
-                        />
-                        <Card
-                            title="Leaderboard"
-                            subtitle="View user rankings"
-                            Icon={FiAward}
-                            isActive={activeTab === "leaderboard"}
-                            onClick={() => setActiveTab("leaderboard")}
-                        />
+                <div className="flex flex-col md:flex-row gap-8">
+                    {/* 左侧卡片导航 */}
+                    <div className="w-full md:w-1/4">
+                        <div className="flex flex-col gap-4">
+                            <Card
+                                title="My Profile"
+                                subtitle="Manage your profile"
+                                Icon={FiUser}
+                                isActive={activeTab === "profile"}
+                                onClick={() => setActiveTab("profile")}
+                            />
+                            <Card
+                                title="Agent Campaign"
+                                subtitle="Chat with the agent"
+                                Icon={FiMessageSquare}
+                                isActive={activeTab === "chat"}
+                                onClick={() => setActiveTab("chat")}
+                            />
+                            <Card
+                                title="Other Campaign"
+                                subtitle="Explore other campaigns"
+                                Icon={FiGrid}
+                                isActive={activeTab === "other"}
+                                onClick={() => setActiveTab("other")}
+                            />
+                            <Card
+                                title="Leaderboard"
+                                subtitle="View user rankings"
+                                Icon={FiAward}
+                                isActive={activeTab === "leaderboard"}
+                                onClick={() => setActiveTab("leaderboard")}
+                            />
+                        </div>
                     </div>
-                </div>
 
-                <div className="mt-8">
-                    {renderContent()}
+                    {/* 右侧主要内容区域 */}
+                    <div className="w-full md:w-3/4">
+                        {renderContent()}
+                    </div>
                 </div>
             </motion.div>
         </main>

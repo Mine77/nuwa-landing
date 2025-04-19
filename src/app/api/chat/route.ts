@@ -1,4 +1,3 @@
-import { Message } from 'ai';
 import { Anthropic } from '@anthropic-ai/sdk';
 import { SYSTEM_PROMPT } from './systemPrompt';
 
