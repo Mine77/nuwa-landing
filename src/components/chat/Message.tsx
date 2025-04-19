@@ -1,12 +1,13 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { useState } from 'react';
+import { BarLoader } from '../leaderboard/BarLoader';
 
 interface MessageProps {
     content: string;
     role: 'user' | 'assistant';
     isLoading?: boolean;
+    isStreaming?: boolean;
 }
 
 const markdownComponents = {
@@ -63,13 +64,8 @@ export function Message({
     content,
     role,
     isLoading,
+    isStreaming = false,
 }: MessageProps) {
-    const [isExpanded, setIsExpanded] = useState(false);
-    const isLongMessage = content.length > 500;
-    const displayContent = isLongMessage && !isExpanded
-        ? content.substring(0, 500) + '...'
-        : content;
-
     return (
         <AnimatePresence>
             <motion.div
@@ -110,27 +106,15 @@ export function Message({
                                         remarkPlugins={[remarkGfm]}
                                         components={markdownComponents}
                                     >
-                                        {displayContent}
+                                        {content}
                                     </ReactMarkdown>
                                 </div>
-
-                                {isLongMessage && (
-                                    <button
-                                        onClick={() => setIsExpanded(!isExpanded)}
-                                        className="text-xs text-blue-500 hover:underline mt-2 self-end"
-                                        aria-expanded={isExpanded}
-                                    >
-                                        {isExpanded ? 'Collapse' : 'Expand'}
-                                    </button>
-                                )}
                             </div>
                         </div>
 
-                        {isLoading && role === 'assistant' && (
-                            <div className="flex items-center gap-2 text-muted-foreground">
-                                <div className="size-2 rounded-full bg-current animate-pulse" />
-                                <div className="size-2 rounded-full bg-current animate-pulse delay-150" />
-                                <div className="size-2 rounded-full bg-current animate-pulse delay-300" />
+                        {isLoading && !isStreaming && role === 'assistant' && (
+                            <div className="flex items-center justify-center">
+                                <BarLoader />
                             </div>
                         )}
                     </div>
