@@ -23,7 +23,7 @@ export const BenefitsGrid = () => {
       whileInView="whileInView"
       className="relative mx-auto grid max-w-6xl grid-cols-3 gap-4 px-2 md:px-4"
     >
-      <div className="col-span-3">
+      <div className="col-span-3 flex w-full flex-col items-center justify-center text-center">
         <SectionHeading>{BENEFITS_GRID_TEXTS.heading}</SectionHeading>
         <SectionSubheading>
           {BENEFITS_GRID_TEXTS.subheading}

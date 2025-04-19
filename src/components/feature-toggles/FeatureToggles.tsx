@@ -16,7 +16,7 @@ export const FeatureToggles = () => {
   const el = data.find((d) => d.id === selected);
 
   return (
-    <section className="relative mx-auto max-w-6xl px-2 md:px-4">
+    <section className="relative mx-auto max-w-6xl px-2 md:px-4 flex w-full flex-col items-center justify-center text-center">
       <SectionHeading>{FEATURE_TOGGLES_TEXTS.heading}</SectionHeading>
       <SectionSubheading>
         {FEATURE_TOGGLES_TEXTS.subheading}
