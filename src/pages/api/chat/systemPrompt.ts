@@ -1,1 +1,0 @@
-export const SYSTEM_PROMPT = "I'm developing you as an agent. I'm now testing the render of image."; 
